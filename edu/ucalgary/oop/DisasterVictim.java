@@ -83,7 +83,7 @@ public class DisasterVictim {
         medicalrecords.add(pMedicalRecord);
     }
     public void addFamilyConnection(FamilyRelation pFamilyConnection){
-        FamilyConnections.add(pFamilyConnection);
+        familyConnections.add(pFamilyConnection);
     }
     public void removePersonalBelonging(Supply pPersonalBelonging){
         for(int i = 0; i < personalBelongings.size();i++){
@@ -95,9 +95,9 @@ public class DisasterVictim {
     }
     public void removeFamilyConnection(FamilyRelation pFamilyConnection){
         for(int i = 0; i < familyConnections.size();i++){
-            if(familyConnections.get(i).getType() == pFamilyConnection.getType()){
+            if(familyConnections.get(i).getPersonTwo().getAssignedSocialID() == pFamilyConnection.getPersonTwo().getAssignedSocialID()){
                 familyConnections.remove(i);
-                i = pfamilyConnections.size();
+                i = familyConnections.size();
             }
         }
     }
