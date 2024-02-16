@@ -111,33 +111,25 @@ public class DisasterVictim {
     public void removePersonalBelonging(Supply personalBelonging){
         //iterate through array
         Supply[] temp = new Supply[this.personalBelongings.length];
-        Boolean found = false;
         for(int i = 0,k=0; i < this.personalBelongings.length;i++){
             if(this.personalBelongings[i].getType() != personalBelonging.getType()){
                 temp[k] = this.personalBelongings[i];
                 k++;
             }else{
-                found = true;
+                this.personalBelongings = Arrays.copyOf(temp,temp.length-1);
             }
-        }
-        if(found = true){
-            this.personalBelongings = Arrays.copyOf(temp,temp.length-1);
         }
     }
     public void removeFamilyConnection(FamilyRelation familyConnection){
         //iterate through array
         FamilyRelation[] temp = new FamilyRelation[this.familyConnections.length];
-        Boolean found = false;
         for(int i = 0,k=0; i < this.familyConnections.length;i++){
             if(this.familyConnections[i].getPersonTwo().getAssignedSocialID() != familyConnection.getPersonTwo().getAssignedSocialID()){
                 temp[k] = this.familyConnections[i];
                 k++;
             }else{
-                found = true;
+                this.familyConnections = Arrays.copyOf(temp,temp.length-1);
             }
-        }
-        if(found = true){
-            this.familyConnections = Arrays.copyOf(temp,temp.length-1);
         }
     }
 }
