@@ -8,55 +8,55 @@ public class Location {
     private String address;
     private List<DisasterVictim> occupants;
     private List<Supply> supplies;
-    public Location(String pName, String pAddress){
-        name = pName;
-        address = pAddress;
-        occupants = new ArrayList<DisasterVictim>();
-        supplies = new ArrayList<Supply>();
+    public Location(String name, String address){
+        this.name = name;
+        this.address = address;
+        this.occupants = new ArrayList<DisasterVictim>();
+        this.supplies = new ArrayList<Supply>();
     }
     public String getName(){
-        return name;
+        return this.name;
     }
     public String getAddress(){
-        return address;
+        return this.address;
     }
     public List<DisasterVictim> getOccupants(){
-        return occupants;
+        return this.occupants;
     }
     public List<Supply> getSupplies(){
-        return supplies;
+        return this.supplies;
     }
-    public void setName(String pName){
-        name = pName;
+    public void setName(String name){
+        this.name = name;
     }
-    public void setAddress(String pAddress){
-        address = pAddress;
+    public void setAddress(String address){
+        this.address = address;
     }
-    public void setOccupants(List<DisasterVictim> pOccupants){
-        occupants = pOccupants;
+    public void setOccupants(List<DisasterVictim> occupants){
+        this.occupants = occupants;
     }
-    public void setSupplies(List<Supply> pSupplies){
-        supplies = pSupplies;
+    public void setSupplies(List<Supply> supplies){
+        this.supplies = supplies;
     }
-    public void addOccupant(DisasterVictim pOccupant){
-        occupants.add(pOccupant);
+    public void addOccupant(DisasterVictim occupant){
+        this.occupants.add(occupant);
     }
-    public void addSupply(Supply pSupply){
-        supplies.add(pSupply);
+    public void addSupply(Supply supply){
+        this.supplies.add(supply);
     }
-    public void removeOccupant(DisasterVictim pOccupant){
-        for(int i = 0; i< occupants.size();i++){
-            if(occupants.get(i).getAssignedSocialID() == pOccupant.getAssignedSocialID()){
-                occupants.remove(i);
-                i = occupants.size();
+    public void removeOccupant(DisasterVictim occupant){
+        for(int i = 0; i< this.occupants.size();i++){
+            if(this.occupants.get(i).getAssignedSocialID() == occupant.getAssignedSocialID()){
+                this.occupants.remove(i);
+                i = this.occupants.size();
             }
         }
     }
-    public void removeSupply(Supply pSupply){
-        for(int i = 0; i< supplies.size();i++){
-            if(supplies.get(i).getType() == pSupply.getType()){
-                supplies.remove(i);
-                i = supplies.size();
+    public void removeSupply(Supply supply){
+        for(int i = 0; i< this.supplies.size();i++){
+            if(this.supplies.get(i).getType() == supply.getType()){
+                this.supplies.remove(i);
+                i = this.supplies.size();
             }
         }
     }
