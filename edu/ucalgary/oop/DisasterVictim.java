@@ -15,12 +15,16 @@ public class DisasterVictim {
     private String ENTRY_DATE;
     private List<Supply> personalBelongings;
     private String gender;
-    private static int counter;
+    private static int counter = 1;
+    //constructor
     public DisasterVictim(String firstName, String ENTRY_DATE){
+        //assign variables to provided values
         this.firstName = firstName;
         this.ENTRY_DATE = ENTRY_DATE;
+        //assign the disaster victim an ID
         this.ASSIGNED_SOCIAL_ID = counter;
         counter++;
+        //initialize arrays
         this.medicalRecords = new ArrayList<MedicalRecord>();
         this.familyConnections = new ArrayList<FamilyRelation>();
         this.personalBelongings = new ArrayList<Supply>();
@@ -89,7 +93,9 @@ public class DisasterVictim {
         this.familyConnections.add(familyConnection);
     }
     public void removePersonalBelonging(Supply personalBelonging){
+        //iterate through array
         for(int i = 0; i < this.personalBelongings.size();i++){
+            //if the correct element is found, remove it and exit loop
             if(this.personalBelongings.get(i).getType() == personalBelonging.getType()){
                 this.personalBelongings.remove(i);
                 i = this.personalBelongings.size();
@@ -97,7 +103,9 @@ public class DisasterVictim {
         }
     }
     public void removeFamilyConnection(FamilyRelation familyConnection){
+         //iterate through array
         for(int i = 0; i < this.familyConnections.size();i++){
+            //if the correct element is found, remove it and exit loop
             if(this.familyConnections.get(i).getPersonTwo().getAssignedSocialID() == familyConnection.getPersonTwo().getAssignedSocialID()){
                 this.familyConnections.remove(i);
                 i = this.familyConnections.size();

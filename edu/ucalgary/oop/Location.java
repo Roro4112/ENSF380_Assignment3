@@ -11,6 +11,7 @@ public class Location {
     public Location(String name, String address){
         this.name = name;
         this.address = address;
+        //initialize arrays
         this.occupants = new ArrayList<DisasterVictim>();
         this.supplies = new ArrayList<Supply>();
     }
@@ -45,7 +46,9 @@ public class Location {
         this.supplies.add(supply);
     }
     public void removeOccupant(DisasterVictim occupant){
+        //iterate through array
         for(int i = 0; i< this.occupants.size();i++){
+            //if element is located remove it and exit loop
             if(this.occupants.get(i).getAssignedSocialID() == occupant.getAssignedSocialID()){
                 this.occupants.remove(i);
                 i = this.occupants.size();
@@ -53,7 +56,9 @@ public class Location {
         }
     }
     public void removeSupply(Supply supply){
+        //iterate through array
         for(int i = 0; i< this.supplies.size();i++){
+            //if element is located remove it and exit loop
             if(this.supplies.get(i).getType() == supply.getType()){
                 this.supplies.remove(i);
                 i = this.supplies.size();
