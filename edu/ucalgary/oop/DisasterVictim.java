@@ -80,7 +80,7 @@ public class DisasterVictim {
         if(matchFound == true){
             this.dateOfBirth = dateOfBirth;
         }else{
-            throw new IllegalArgumentException("Invalid Date Format:"+ENTRY_DATE);
+            throw new IllegalArgumentException("Invalid Date Format:"+dateOfBirth);
         }
     }
     public void  setComments(String comments){

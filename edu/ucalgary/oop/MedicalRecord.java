@@ -1,13 +1,24 @@
 package edu.ucalgary.oop;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MedicalRecord {
     private Location location;
     private String treatmentDetails;
     private String dateOfTreatment;
+    private static final String REGEX = "^(\\d{4})([_/ -.]{1})(\\d{2})([_/ -.]{1})(\\d{2})";
+    private static final Pattern PATTERN = Pattern.compile(REGEX);
     public MedicalRecord(Location location, String treatmentDetails, String dateOfTreatmenet) {
-        this.location = location;
-        this.treatmentDetails = treatmentDetails;
-        this.dateOfTreatment = dateOfTreatmenet;
+        Matcher match = PATTERN.matcher(dateOfTreatment);
+        boolean matchFound = match.find();
+        if(matchFound == true){
+            this.location = location;
+            this.treatmentDetails = treatmentDetails;
+            this.dateOfTreatment = dateOfTreatmenet;
+        }else{
+            throw new IllegalArgumentException("Invalid Date Format:"+dateOfTreatment);
+        }
     }
 
     public Location getLocation() { return this.location; }
@@ -16,5 +27,13 @@ public class MedicalRecord {
 
     public void setLocation(Location location) { this.location = location; }
     public void setTreatmentDetails(String treatmentDetails) { this.treatmentDetails = treatmentDetails; }
-    public void setDateOfTreatment(String dateOfTreatment) { this.dateOfTreatment = dateOfTreatment; }
+    public void setDateOfTreatment(String dateOfTreatment) {
+        Matcher match = PATTERN.matcher(dateOfTreatment);
+        boolean matchFound = match.find();
+        if(matchFound == true){ 
+            this.dateOfTreatment = dateOfTreatment; 
+        }else{
+            throw new IllegalArgumentException("Invalid Date Format:"+dateOfTreatment);
+        }
+    }
 }
