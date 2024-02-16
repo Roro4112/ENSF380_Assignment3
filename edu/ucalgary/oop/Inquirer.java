@@ -12,7 +12,7 @@ public class Inquirer {
         this.INFO = INFO;
         this.SERVICES_PHONE =SERVICES_PHONE;
     }
-    //returns firtname
+    //returns firstname
     public String getFirstName(){
         return this.FIRST_NAME;
     }
