@@ -2,6 +2,7 @@ package edu.ucalgary.oop;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.*;
 
 public class DisasterVictim {
     private String firstName;
@@ -14,11 +15,13 @@ public class DisasterVictim {
     private String ENTRY_DATE;
     private List<Supply> personalBelongings;
     private String gender;
-    private int counter;
+    private static int counter;
     public DisasterVictim(String firstName, String ENTRY_DATE){
         this.firstName = firstName;
-        this.ENTRY_DATE = pENTRY_DATE;
-        this.medicalRecords = new ArrayList<MedicalRecords>();
+        this.ENTRY_DATE = ENTRY_DATE;
+        this.ASSIGNED_SOCIAL_ID = counter;
+        counter++;
+        this.medicalRecords = new ArrayList<MedicalRecord>();
         this.familyConnections = new ArrayList<FamilyRelation>();
         this.personalBelongings = new ArrayList<Supply>();
     }
@@ -34,7 +37,7 @@ public class DisasterVictim {
     public String getComments(){
         return this.comments;
     }
-    public List<MedicalRecords> getMedicalRecords(){
+    public List<MedicalRecord> getMedicalRecords(){
         return this.medicalRecords;
     }
     public String getEntryDate(){
@@ -80,7 +83,7 @@ public class DisasterVictim {
         this.personalBelongings.add(personalBelonging);
     }
     public void addMedicalRecord(MedicalRecord medicalRecord){
-        this.medicalrecords.add(medicalRecord);
+        this.medicalRecords.add(medicalRecord);
     }
     public void addFamilyConnection(FamilyRelation familyConnection){
         this.familyConnections.add(familyConnection);
