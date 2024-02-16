@@ -16,18 +16,27 @@ public class DisasterVictim {
     private List<Supply> personalBelongings;
     private String gender;
     private static int counter = 1;
+    private static final String REGEX = "^(\\d{4})([_/ -.]{1})(\\d{2})([_/ -.]{1})(\\d{2})";
+    private static final Pattern PATTERN = Pattern.compile(REGEX);
     //constructor
-    public DisasterVictim(String firstName, String ENTRY_DATE){
-        //assign variables to provided values
-        this.firstName = firstName;
-        this.ENTRY_DATE = ENTRY_DATE;
-        //assign the disaster victim an ID
-        this.ASSIGNED_SOCIAL_ID = counter;
-        counter++;
-        //initialize arrays
-        this.medicalRecords = new ArrayList<MedicalRecord>();
-        this.familyConnections = new ArrayList<FamilyRelation>();
-        this.personalBelongings = new ArrayList<Supply>();
+    public DisasterVictim(String firstName, String ENTRY_DATE) throws IllegalArgumentException{
+        //making sure date format is correct
+        Matcher match = PATTERN.matcher(ENTRY_DATE);
+        boolean matchFound = match.find();
+        if(matchFound == true){
+            //assign variables to provided values
+            this.firstName = firstName;
+            this.ENTRY_DATE = ENTRY_DATE;
+            //assign the disaster victim an ID
+            this.ASSIGNED_SOCIAL_ID = counter;
+            counter++;
+            //initialize arrays
+            this.medicalRecords = new ArrayList<MedicalRecord>();
+            this.familyConnections = new ArrayList<FamilyRelation>();
+            this.personalBelongings = new ArrayList<Supply>();
+        }else{
+            throw new IllegalArgumentException("Invalid Date Format:"+ENTRY_DATE);
+        }
     }
     public String getFirstName(){
         return this.firstName;
@@ -66,7 +75,13 @@ public class DisasterVictim {
         this.lastName = lastName;
     }
     public void setDateOFBirth(String dateOfBirth){
-        this.dateOfBirth = dateOfBirth;
+        Matcher match = PATTERN.matcher(dateOfBirth);
+        boolean matchFound = match.find();
+        if(matchFound == true){
+            this.dateOfBirth = dateOfBirth;
+        }else{
+            throw new IllegalArgumentException("Invalid Date Format:"+ENTRY_DATE);
+        }
     }
     public void  setComments(String comments){
         this.comments = comments;
