@@ -4,21 +4,21 @@ package edu.ucalgary.oop;
 public class Supply{
     private String type;
     private int quantity;
-    public Supply(String pType, int pQuantity){
-        type = pType;
-        quantity = pQuantity;
+    public Supply(String type, int quantity){
+        this.type = type;
+        this.quantity = quantity;
     }
     public String getType(){
-        return type;
+        return this.type;
     }
     public int getQuantity(){
-        return quantity;
+        return this.quantity;
     }
-    public void setType(String pType){
-        type = pType;
+    public void setType(String type){
+        this.type = type;
     }
-    public void setQuantity(int pQuantity){
-        quantity = pQuantity;
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
     }
 }
 
