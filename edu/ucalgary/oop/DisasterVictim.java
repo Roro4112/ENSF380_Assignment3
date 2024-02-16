@@ -15,7 +15,7 @@ public class DisasterVictim {
     private Supply[] personalBelongings = {};
     private String gender;
     private static int counter = 1;
-    private static final String REGEX = "^(\\d{4})([_/ -.]{1})(\\d{2})([_/ -.]{1})(\\d{2})";
+    private static final String REGEX = "^(\\d{4})([-]{1})(\\d{2})([-]{1})(\\d{2})";
     private static final Pattern PATTERN = Pattern.compile(REGEX);
     //constructor
     public DisasterVictim(String firstName, String ENTRY_DATE) throws IllegalArgumentException{
@@ -83,13 +83,13 @@ public class DisasterVictim {
         this.comments = comments;
     }
     public void setMedicalRecords(MedicalRecord[] medicalRecords){
-        this.medicalRecords = medicalRecords;
+        this.medicalRecords = Arrays.copyOf(medicalRecords,medicalRecords.length);
     }
     public void setPersonalBelongings(Supply[] personalBelongings){
-        this.personalBelongings = personalBelongings;
+        this.personalBelongings = Arrays.copyOf(personalBelongings,personalBelongings.length);
     }
     public void setFamilyConnections(FamilyRelation[] familyConnections){
-        this.familyConnections = familyConnections;
+        this.familyConnections = Arrays.copyOf(familyConnections,familyConnections.length);
     }
     public void setGender(String gender){
         this.gender = gender;
