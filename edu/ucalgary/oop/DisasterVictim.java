@@ -15,89 +15,89 @@ public class DisasterVictim {
     private List<Supply> personalBelongings;
     private String gender;
     private int counter;
-    public DisasterVictim(String pFirstName, String pENTRY_DATE){
-        firstName = pFirstName;
-        ENTRY_DATE = pENTRY_DATE;
-        medicalRecords = new ArrayList<MedicalRecords>();
-        familyConnections = new ArrayList<FamilyRelation>();
-        personalBelongings = new ArrayList<Supply>();
+    public DisasterVictim(String firstName, String ENTRY_DATE){
+        this.firstName = firstName;
+        this.ENTRY_DATE = pENTRY_DATE;
+        this.medicalRecords = new ArrayList<MedicalRecords>();
+        this.familyConnections = new ArrayList<FamilyRelation>();
+        this.personalBelongings = new ArrayList<Supply>();
     }
     public String getFirstName(){
-        return firstName;
+        return this.firstName;
     }
     public String getLAstName(){
-        return lastName;
+        return this.lastName;
     }
     public String getDateOfBirth(){
-        return dateOfBirth;
+        return this.dateOfBirth;
     }
     public String getComments(){
-        return comments;
+        return this.comments;
     }
     public List<MedicalRecords> getMedicalRecords(){
-        return medicalRecords;
+        return this.medicalRecords;
     }
     public String getEntryDate(){
-        return ENTRY_DATE;
+        return this.ENTRY_DATE;
     }
     public int getAssignedSocialID(){
-        return ASSIGNED_SOCIAL_ID;
+        return this.ASSIGNED_SOCIAL_ID;
     }
     public List<Supply> getPersonalBelongings(){
-        return personalBelongings;
+        return this.personalBelongings;
     }
     public List<FamilyRelation> getFamilyConnections(){
-        return familyConnections;
+        return this.familyConnections;
     }
     public String getGender(){
-        return gender;
+        return this.gender;
     }
-    public void setFirstName(String pName){
-        firstName = pName;
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
     }
-    public void setLastName(String pName){
-        lastName = pName;
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
-    public void setDateOFBirth(String pDateOfBirth){
-        dateOfBirth = pDateOfBirth;
+    public void setDateOFBirth(String dateOfBirth){
+        this.dateOfBirth = dateOfBirth;
     }
-    public void  setComments(String pComments){
-        comments = pComments;
+    public void  setComments(String comments){
+        this.comments = comments;
     }
-    public void setMedicalRecords(List<MedicalRecord> pMedicalRecords){
-        medicalRecords = pMedicalRecords;
+    public void setMedicalRecords(List<MedicalRecord> medicalRecords){
+        this.medicalRecords = medicalRecords;
     }
-    public void setPersonalBelongings(List<Supply> pPersonalBelongings){
-        personalBelongings = pPersonalBelongings;
+    public void setPersonalBelongings(List<Supply> personalBelongings){
+        this.personalBelongings = personalBelongings;
     }
-    public void setFamilyConnections(List<FamilyRelation> pFamilyConnections){
-        familyConnections = pFamilyConnections;
+    public void setFamilyConnections(List<FamilyRelation> familyConnections){
+        this.familyConnections = familyConnections;
     }
-    public void setGender(String pGender){
-        gender = pGender;
+    public void setGender(String gender){
+        this.gender = gender;
     }
-    public void addPersonalBelonging(Supply pPersonalBelonging){
-        personalBelongings.add(pPersonalBelonging);
+    public void addPersonalBelonging(Supply personalBelonging){
+        this.personalBelongings.add(personalBelonging);
     }
-    public void addMedicalRecord(MedicalRecord pMedicalRecord){
-        medicalrecords.add(pMedicalRecord);
+    public void addMedicalRecord(MedicalRecord medicalRecord){
+        this.medicalrecords.add(medicalRecord);
     }
-    public void addFamilyConnection(FamilyRelation pFamilyConnection){
-        familyConnections.add(pFamilyConnection);
+    public void addFamilyConnection(FamilyRelation familyConnection){
+        this.familyConnections.add(familyConnection);
     }
-    public void removePersonalBelonging(Supply pPersonalBelonging){
-        for(int i = 0; i < personalBelongings.size();i++){
-            if(personalBelongings.get(i).getType() == pPersonalBelonging.getType()){
-                personalBelongings.remove(i);
-                i = personalBelongings.size();
+    public void removePersonalBelonging(Supply personalBelonging){
+        for(int i = 0; i < this.personalBelongings.size();i++){
+            if(this.personalBelongings.get(i).getType() == personalBelonging.getType()){
+                this.personalBelongings.remove(i);
+                i = this.personalBelongings.size();
             }
         }
     }
-    public void removeFamilyConnection(FamilyRelation pFamilyConnection){
-        for(int i = 0; i < familyConnections.size();i++){
-            if(familyConnections.get(i).getPersonTwo().getAssignedSocialID() == pFamilyConnection.getPersonTwo().getAssignedSocialID()){
-                familyConnections.remove(i);
-                i = familyConnections.size();
+    public void removeFamilyConnection(FamilyRelation familyConnection){
+        for(int i = 0; i < this.familyConnections.size();i++){
+            if(this.familyConnections.get(i).getPersonTwo().getAssignedSocialID() == familyConnection.getPersonTwo().getAssignedSocialID()){
+                this.familyConnections.remove(i);
+                i = this.familyConnections.size();
             }
         }
     }
