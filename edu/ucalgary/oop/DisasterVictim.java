@@ -38,7 +38,9 @@ public class DisasterVictim {
         return this.firstName;
     }
     public String getLastName(){
-        return this.lastName;
+        // (Sebastian: I had to change this because the ReliefService class couldn't work)
+        if (lastName == null) { return ""; }
+        else { return this.lastName; }
     }
     public String getDateOfBirth(){
         return this.dateOfBirth;
