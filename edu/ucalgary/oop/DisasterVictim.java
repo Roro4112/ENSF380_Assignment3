@@ -1,20 +1,26 @@
 package edu.ucalgary.oop;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DisasterVictim {
     private String firstName;
     private String lastName;
     private String dateOfBirth;
     private String comments;
     private int ASSIGNED_SOCIAL_ID;
-    private MedicalRecord[] medicalRecords;
-    private FamilyRelation[] familyConnections;
+    private List<MedicalRecord> medicalRecords;
+    private List<FamilyRelation> familyConnections;
     private String ENTRY_DATE;
-    private Supply[] personalBelongings;
+    private List<Supply> personalBelongings;
     private String gender;
     private int counter;
     public DisasterVictim(String pFirstName, String pENTRY_DATE){
         firstName = pFirstName;
         ENTRY_DATE = pENTRY_DATE;
+        medicalRecords = new ArrayList<MedicalRecords>();
+        familyConnections = new ArrayList<FamilyRelation>();
+        personalBelongings = new ArrayList<Supply>();
     }
     public String getFirstName(){
         return firstName;
@@ -28,7 +34,7 @@ public class DisasterVictim {
     public String getComments(){
         return comments;
     }
-    public MedicalRecords[] getMedicalRecords(){
+    public List<MedicalRecords> getMedicalRecords(){
         return medicalRecords;
     }
     public String getEntryDate(){
@@ -37,10 +43,10 @@ public class DisasterVictim {
     public int getAssignedSocialID(){
         return ASSIGNED_SOCIAL_ID;
     }
-    public Supply[] getPersonalBelongings(){
+    public List<Supply> getPersonalBelongings(){
         return personalBelongings;
     }
-    public FamilyRelation[] getFamilyConnections(){
+    public List<FamilyRelation> getFamilyConnections(){
         return familyConnections;
     }
     public String getGender(){
@@ -58,19 +64,41 @@ public class DisasterVictim {
     public void  setComments(String pComments){
         comments = pComments;
     }
-    public void setMedicalRecords(MedicalRecord[] pMedicalRecords){
+    public void setMedicalRecords(List<MedicalRecord> pMedicalRecords){
         medicalRecords = pMedicalRecords;
     }
-    public void setPersonalBelongings(Supply[] pPersonalBelongings){
+    public void setPersonalBelongings(List<Supply> pPersonalBelongings){
         personalBelongings = pPersonalBelongings;
     }
-    public void setFamilyConnections(FamilyRelation[] pFamilyConnections){
+    public void setFamilyConnections(List<FamilyRelation> pFamilyConnections){
         familyConnections = pFamilyConnections;
     }
     public void setGender(String pGender){
         gender = pGender;
     }
     public void addPersonalBelonging(Supply pPersonalBelonging){
-        
+        personalBelongings.add(pPersonalBelonging);
+    }
+    public void addMedicalRecord(MedicalRecord pMedicalRecord){
+        medicalrecords.add(pMedicalRecord);
+    }
+    public void addFamilyConnection(FamilyRelation pFamilyConnection){
+        FamilyConnections.add(pFamilyConnection);
+    }
+    public void removePersonalBelonging(Supply pPersonalBelonging){
+        for(int i = 0; i < personalBelongings.size();i++){
+            if(personalBelongings.get(i).getType() == pPersonalBelonging.getType()){
+                personalBelongings.remove(i);
+                i = personalBelongings.size();
+            }
+        }
+    }
+    public void removeFamilyConnection(FamilyRelation pFamilyConnection){
+        for(int i = 0; i < familyConnections.size();i++){
+            if(familyConnections.get(i).getType() == pFamilyConnection.getType()){
+                familyConnections.remove(i);
+                i = pfamilyConnections.size();
+            }
+        }
     }
 }
