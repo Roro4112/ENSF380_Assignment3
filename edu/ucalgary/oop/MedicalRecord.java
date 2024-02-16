@@ -9,15 +9,15 @@ public class MedicalRecord {
     private String dateOfTreatment;
     private static final String REGEX = "^(\\d{4})([-]{1})(\\d{2})([-]{1})(\\d{2})";
     private static final Pattern PATTERN = Pattern.compile(REGEX);
-    public MedicalRecord(Location location, String treatmentDetails, String dateOfTreatmenet) {
+    public MedicalRecord(Location location, String treatmentDetails, String dateOfTreatment) {
+        this.location = location;
+        this.treatmentDetails = treatmentDetails;
         Matcher match = PATTERN.matcher(dateOfTreatment);
         boolean matchFound = match.find();
         if(matchFound == true){
-            this.location = location;
-            this.treatmentDetails = treatmentDetails;
-            this.dateOfTreatment = dateOfTreatmenet;
-        }else{
-            throw new IllegalArgumentException("Invalid Date Format:"+dateOfTreatment);
+            this.dateOfTreatment = dateOfTreatment;
+        } else {
+            throw new IllegalArgumentException("Invalid Date Format: " + dateOfTreatment);
         }
     }
 
@@ -42,7 +42,7 @@ public class MedicalRecord {
         if(matchFound == true){ 
             this.dateOfTreatment = dateOfTreatment; 
         }else{
-            throw new IllegalArgumentException("Invalid Date Format:"+dateOfTreatment);
+            throw new IllegalArgumentException("Invalid Date Format: "+dateOfTreatment);
         }
     }
 }

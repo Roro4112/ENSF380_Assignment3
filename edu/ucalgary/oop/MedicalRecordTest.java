@@ -28,7 +28,7 @@ public class MedicalRecordTest {
     assertEquals("getLocation should return the correct Location", expectedLocation, medicalRecord.getLocation());
     }
 
- @Test
+    @Test
     public void testSetLocation() {
 	Location newExpectedLocation = new Location("Shelter B", "150 8 Ave NW ");
 	medicalRecord.setLocation(newExpectedLocation);
@@ -39,7 +39,7 @@ public class MedicalRecordTest {
     public void testGetTreatmentDetails() {
         assertEquals("getTreatmentDetails should return the correct treatment details", expectedTreatmentDetails, medicalRecord.getTreatmentDetails());
     }
-@Test
+    @Test
     public void testSetTreatmentDetails() {
 	String newExpectedTreatment = "No surgery required";
 	medicalRecord.setTreatmentDetails(newExpectedTreatment);
