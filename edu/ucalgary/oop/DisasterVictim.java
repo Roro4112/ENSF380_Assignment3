@@ -37,7 +37,7 @@ public class DisasterVictim {
     public String getFirstName(){
         return this.firstName;
     }
-    public String getLAstName(){
+    public String getLastName(){
         return this.lastName;
     }
     public String getDateOfBirth(){
@@ -70,7 +70,7 @@ public class DisasterVictim {
     public void setLastName(String lastName){
         this.lastName = lastName;
     }
-    public void setDateOFBirth(String dateOfBirth){
+    public void setDateOfBirth(String dateOfBirth){
         Matcher match = PATTERN.matcher(dateOfBirth);
         boolean matchFound = match.find();
         if(matchFound == true){
@@ -99,7 +99,7 @@ public class DisasterVictim {
         this.personalBelongings[this.personalBelongings.length-1] = personalBelonging;
     }
     public void addMedicalRecord(MedicalRecord medicalRecord){
-        this.medicalRecords = Arrays.copyOf(this.medicalRecords,this.medicalRecords.length+1);\
+        this.medicalRecords = Arrays.copyOf(this.medicalRecords,this.medicalRecords.length+1);
         this.medicalRecords[this.medicalRecords.length-1] = medicalRecord;
     }
     public void addFamilyConnection(FamilyRelation familyConnection){
