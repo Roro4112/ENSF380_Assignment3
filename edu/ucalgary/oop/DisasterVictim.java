@@ -1,7 +1,6 @@
 package edu.ucalgary.oop;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.regex.*;
 
 public class DisasterVictim {
@@ -10,10 +9,10 @@ public class DisasterVictim {
     private String dateOfBirth;
     private String comments;
     private int ASSIGNED_SOCIAL_ID;
-    private List<MedicalRecord> medicalRecords;
-    private List<FamilyRelation> familyConnections;
+    private MedicalRecord[] medicalRecords = {};
+    private FamilyRelation[] familyConnections = {};
     private String ENTRY_DATE;
-    private List<Supply> personalBelongings;
+    private Supply[] personalBelongings = {};
     private String gender;
     private static int counter = 1;
     private static final String REGEX = "^(\\d{4})([_/ -.]{1})(\\d{2})([_/ -.]{1})(\\d{2})";
@@ -31,9 +30,6 @@ public class DisasterVictim {
             this.ASSIGNED_SOCIAL_ID = counter;
             counter++;
             //initialize arrays
-            this.medicalRecords = new ArrayList<MedicalRecord>();
-            this.familyConnections = new ArrayList<FamilyRelation>();
-            this.personalBelongings = new ArrayList<Supply>();
         }else{
             throw new IllegalArgumentException("Invalid Date Format:"+ENTRY_DATE);
         }
@@ -50,7 +46,7 @@ public class DisasterVictim {
     public String getComments(){
         return this.comments;
     }
-    public List<MedicalRecord> getMedicalRecords(){
+    public MedicalRecord[] getMedicalRecords(){
         return this.medicalRecords;
     }
     public String getEntryDate(){
@@ -59,10 +55,10 @@ public class DisasterVictim {
     public int getAssignedSocialID(){
         return this.ASSIGNED_SOCIAL_ID;
     }
-    public List<Supply> getPersonalBelongings(){
+    public Supply[] getPersonalBelongings(){
         return this.personalBelongings;
     }
-    public List<FamilyRelation> getFamilyConnections(){
+    public FamilyRelation[] getFamilyConnections(){
         return this.familyConnections;
     }
     public String getGender(){
@@ -86,45 +82,60 @@ public class DisasterVictim {
     public void  setComments(String comments){
         this.comments = comments;
     }
-    public void setMedicalRecords(List<MedicalRecord> medicalRecords){
+    public void setMedicalRecords(MedicalRecord[] medicalRecords){
         this.medicalRecords = medicalRecords;
     }
-    public void setPersonalBelongings(List<Supply> personalBelongings){
+    public void setPersonalBelongings(Supply[] personalBelongings){
         this.personalBelongings = personalBelongings;
     }
-    public void setFamilyConnections(List<FamilyRelation> familyConnections){
+    public void setFamilyConnections(FamilyRelation[] familyConnections){
         this.familyConnections = familyConnections;
     }
     public void setGender(String gender){
         this.gender = gender;
     }
     public void addPersonalBelonging(Supply personalBelonging){
-        this.personalBelongings.add(personalBelonging);
+        this.personalBelongings = Arrays.copyOf(this.personalBelongings,this.personalBelongings.length+1);
+        this.personalBelongings[this.personalBelongings.length-1] = personalBelonging;
     }
     public void addMedicalRecord(MedicalRecord medicalRecord){
-        this.medicalRecords.add(medicalRecord);
+        this.medicalRecords = Arrays.copyOf(this.medicalRecords,this.medicalRecords.length+1);\
+        this.medicalRecords[this.medicalRecords.length-1] = medicalRecord;
     }
     public void addFamilyConnection(FamilyRelation familyConnection){
-        this.familyConnections.add(familyConnection);
+        this.familyConnections = Arrays.copyOf(this.familyConnections,this.familyConnections.length+1);
+        this.familyConnections[this.familyConnections.length-1] = familyConnection;
     }
     public void removePersonalBelonging(Supply personalBelonging){
         //iterate through array
-        for(int i = 0; i < this.personalBelongings.size();i++){
-            //if the correct element is found, remove it and exit loop
-            if(this.personalBelongings.get(i).getType() == personalBelonging.getType()){
-                this.personalBelongings.remove(i);
-                i = this.personalBelongings.size();
+        Supply[] temp = new Supply[this.personalBelongings.length];
+        Boolean found = false;
+        for(int i = 0,k=0; i < this.personalBelongings.length;i++){
+            if(this.personalBelongings[i].getType() != personalBelonging.getType()){
+                temp[k] = this.personalBelongings[i];
+                k++;
+            }else{
+                found = true;
             }
+        }
+        if(found = true){
+            this.personalBelongings = Arrays.copyOf(temp,temp.length-1);
         }
     }
     public void removeFamilyConnection(FamilyRelation familyConnection){
-         //iterate through array
-        for(int i = 0; i < this.familyConnections.size();i++){
-            //if the correct element is found, remove it and exit loop
-            if(this.familyConnections.get(i).getPersonTwo().getAssignedSocialID() == familyConnection.getPersonTwo().getAssignedSocialID()){
-                this.familyConnections.remove(i);
-                i = this.familyConnections.size();
+        //iterate through array
+        FamilyRelation[] temp = new FamilyRelation[this.familyConnections.length];
+        Boolean found = false;
+        for(int i = 0,k=0; i < this.familyConnections.length;i++){
+            if(this.familyConnections[i].getPersonTwo().getAssignedSocialID() != familyConnection.getPersonTwo().getAssignedSocialID()){
+                temp[k] = this.familyConnections[i];
+                k++;
+            }else{
+                found = true;
             }
+        }
+        if(found = true){
+            this.familyConnections = Arrays.copyOf(temp,temp.length-1);
         }
     }
 }
