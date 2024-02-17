@@ -1,7 +1,6 @@
 package edu.ucalgary.oop;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Location {
     private String name;
